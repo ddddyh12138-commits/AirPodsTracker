@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-11",
+  "repository": "ddddyh12138-commits/AirPodsTracker",
+  "visibility": "private",
+  "ipa_generated": false,
+  "first_run": {
+    "id": 38142253954,
+    "commit": "897e74c65c902c0abe62e86e3b9f38e296cb5629",
+    "url": "https://github.com/ddddyh12138-commits/AirPodsTracker/actions/runs/38142253954",
+    "core_tests": 27,
+    "core_test_failures": 0,
+    "app_build_error": "App requested x86_64 simulator module; TrackerCore was built only for arm64 simulator"
+  },
+  "latest_attempt": {
+    "id": 38142462652,
+    "commit": "5580b56ee181044f3e921790075ecdb4e20927d9",
+    "url": "https://github.com/ddddyh12138-commits/AirPodsTracker/actions/runs/38142462652",
+    "job_started": false,
+    "runner_id": 0,
+    "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+    "fix_pending_verification": "Set ONLY_ACTIVE_ARCH=YES for Debug app/test/project configurations"
+  },
+  "device_installation_verified": false
+}

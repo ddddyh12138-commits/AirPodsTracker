@@ -2,7 +2,7 @@
 
 一个 iOS 17+ 原生 iPhone App 项目。已整合原开发方案与 UI 风格：四个标签页、深色双环、透明电量容器、记录时间轴、统计和分享卡。
 
-**交付状态：源码、Xcode 工程及资源已齐全；尚未在 Mac 上编译，也尚未通过 iPhone 真机验证。** 当前交付环境为 Windows。源码语法解析、工程文件引用、plist、scheme 与资源结构检查已通过，这些检查不能替代编译和真机运行。
+**交付状态：源码、Xcode 工程及新 Logo 已齐全；27 项核心业务测试已在 GitHub macOS 构建机通过，完整 App 编译与 IPA 打包尚未完成。** 首次 App 编译发现模拟器架构不一致，配置已修正；再次构建被 GitHub 的账户付款/预算限制拒绝启动。详见 `docs/cloud-build-status.json`。尚未通过 iPhone 真机验证。
 
 ## 使用方式
 
@@ -53,7 +53,7 @@ bash scripts/check-macos.sh
 bash scripts/build-unsigned-ipa.sh
 ```
 
-已附 `.github/workflows/ios.yml`，将项目放进自己的 GitHub 仓库后可运行 macOS 构建流程；流程会测试、编译并上传未签名 IPA。**本次没有运行 GitHub Actions，也没有生成或安装 IPA。**
+已附 `.github/workflows/ios.yml`，流程会测试、编译并上传未签名 IPA。项目已按授权上传到私有仓库 [ddddyh12138-commits/AirPodsTracker](https://github.com/ddddyh12138-commits/AirPodsTracker)。**已尝试 GitHub Actions，尚未生成或安装 IPA。** GitHub 提示账户付款失败或需要调整支出额度；保留私有构建需要账号所有者检查该限制，也可以自行在 Mac 运行上述脚本。
 
 源码结构检查可运行 `python3 scripts/validate-source.py`。安装 `tree-sitter==0.26.0` 与 `tree-sitter-swift==0.7.4` 后还会做 Swift 语法解析。该脚本不检查 SDK API 类型或 SwiftUI 类型推断，不可用于宣称编译通过。
 
