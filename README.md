@@ -2,7 +2,7 @@
 
 一个 iOS 17+ 原生 iPhone App 项目。已整合原开发方案与 UI 风格：四个标签页、深色双环、透明电量容器、记录时间轴、统计和分享卡。
 
-**交付状态：源码、Xcode 工程及新 Logo 已齐全；27 项核心业务测试已在 GitHub macOS 构建机通过，完整 App 编译与 IPA 打包尚未完成。** 首次 App 编译发现模拟器架构不一致，配置已修正；再次构建被 GitHub 的账户付款/预算限制拒绝启动。详见 `docs/cloud-build-status.json`。尚未通过 iPhone 真机验证。
+**交付状态：完整 App 已通过 macOS 云端编译，27 项核心测试和 4 项 iOS 集成测试全部通过，未签名 IPA 已生成，包含新 Logo。** 已核验 IPA 的 arm64 设备程序、iPhoneOS 平台、图标资源、四个 App Intent 与快捷指令元数据。尚未通过 iPhone 真机安装与自动化验证。
 
 ## 使用方式
 
@@ -53,7 +53,7 @@ bash scripts/check-macos.sh
 bash scripts/build-unsigned-ipa.sh
 ```
 
-已附 `.github/workflows/ios.yml`，流程会测试、编译并上传未签名 IPA。项目已按授权上传到私有仓库 [ddddyh12138-commits/AirPodsTracker](https://github.com/ddddyh12138-commits/AirPodsTracker)。**已尝试 GitHub Actions，尚未生成或安装 IPA。** GitHub 提示账户付款失败或需要调整支出额度；保留私有构建需要账号所有者检查该限制，也可以自行在 Mac 运行上述脚本。
+已附 `.github/workflows/ios.yml`，流程会测试、编译并上传未签名 IPA。项目仓库 [ddddyh12138-commits/AirPodsTracker](https://github.com/ddddyh12138-commits/AirPodsTracker) 已按单独授权改为公开，公开构建成功：[运行 38142462652，第二次尝试](https://github.com/ddddyh12138-commits/AirPodsTracker/actions/runs/38142462652/attempts/2)。**IPA 已生成，未在 iPhone 上安装。** 云端使用 Xcode 16.4 / Swift 6.1.2，项目采用 Swift 5 语言模式，最低 iOS 17.0。验证信息见 `docs/cloud-build-status.json` 与 `docs/ipa-verification.json`。
 
 源码结构检查可运行 `python3 scripts/validate-source.py`。安装 `tree-sitter==0.26.0` 与 `tree-sitter-swift==0.7.4` 后还会做 Swift 语法解析。该脚本不检查 SDK API 类型或 SwiftUI 类型推断，不可用于宣称编译通过。
 

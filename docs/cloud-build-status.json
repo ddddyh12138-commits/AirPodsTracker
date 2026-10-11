@@ -1,8 +1,8 @@
 {
   "date": "2026-10-11",
   "repository": "ddddyh12138-commits/AirPodsTracker",
-  "visibility": "private",
-  "ipa_generated": false,
+  "visibility": "public",
+  "ipa_generated": true,
   "first_run": {
     "id": 38142253954,
     "commit": "897e74c65c902c0abe62e86e3b9f38e296cb5629",
@@ -11,7 +11,8 @@
     "core_test_failures": 0,
     "app_build_error": "App requested x86_64 simulator module; TrackerCore was built only for arm64 simulator"
   },
-  "latest_attempt": {
+  "device_installation_verified": false,
+  "private_attempt_restriction": {
     "id": 38142462652,
     "commit": "5580b56ee181044f3e921790075ecdb4e20927d9",
     "url": "https://github.com/ddddyh12138-commits/AirPodsTracker/actions/runs/38142462652",
@@ -20,5 +21,27 @@
     "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
     "fix_pending_verification": "Set ONLY_ACTIVE_ARCH=YES for Debug app/test/project configurations"
   },
-  "device_installation_verified": false
+  "latest_attempt": {
+    "id": 38142462652,
+    "attempt": 2,
+    "job_id": 114480005004,
+    "commit": "5580b56ee181044f3e921790075ecdb4e20927d9",
+    "url": "https://github.com/ddddyh12138-commits/AirPodsTracker/actions/runs/38142462652/attempts/2",
+    "conclusion": "success",
+    "core_tests": 27,
+    "integration_tests": 4,
+    "test_failures": 0,
+    "simulator": "iPhone 16 Pro / iOS 18.5",
+    "device_build": "Release / iPhoneOS / arm64",
+    "xcode": "16.4",
+    "swift_compiler": "6.1.2",
+    "swift_language_mode": "5",
+    "artifact_id": 11703343786,
+    "artifact_zip_sha256": "d8bf59009d548f765c97e419ed0d7fe9a18643365c05d43050e0385738f48e3f",
+    "ipa_sha256": "73a7d3d050d44441ba744116c742d58e701e631b8b898115d3ba552160e2b971",
+    "non_blocking_diagnostics": [
+      "Swift 6 concurrency migration warnings",
+      "App Intents SSU natural language training archive error; runtime shortcut behavior requires device validation"
+    ]
+  }
 }

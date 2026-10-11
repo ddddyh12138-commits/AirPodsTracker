@@ -1,6 +1,6 @@
 # 交付与验证记录
 
-日期：2026-10-11。本地交付环境：Windows / PowerShell；已使用 GitHub macOS 构建机进行第一轮编译测试。
+日期：2026-10-11。本地交付环境：Windows / PowerShell；云端编译环境：macOS / Xcode 16.4 / Swift 6.1.2（Swift 5 语言模式）。
 
 | 层级 | 结果 | 实际证据与限制 |
 |---|---|---|
@@ -8,15 +8,16 @@
 | Swift 语法 | 已通过解析 | tree-sitter Swift 语法解析；不等于 Swift 编译或 API 类型检查 |
 | 工程结构 | 已检查 | 所有 App Swift 文件与集成测试均有 Xcode 源文件引用，scheme 指向有效 target |
 | 资源结构 | 已检查 | Info.plist、隐私声明、资源 JSON、AppIcon 引用可解析 |
-| 核心业务测试 | 已通过 | macOS 上 27 项 XCTest，0 失败；首轮运行 38142253954 |
-| Store 集成测试 | 未执行完成 | 首轮 App 编译失败，未进入测试执行 |
-| iOS 编译 | 已尝试，未通过 | 首轮模拟器架构不一致；已修正 Debug 的 ONLY_ACTIVE_ARCH。重跑遭 GitHub 账户限制拒绝启动，修正尚未验证 |
-| 模拟器 UI | 未验证 | 未完成 App 编译；未以生成图代替实际渲染证据 |
+| 核心业务测试 | 已通过 | macOS 上 27 项 XCTest，0 失败；成功运行 38142462652，尝试 2 |
+| Store 集成测试 | 已通过 | iPhone 16 Pro / iOS 18.5 模拟器上 4 项测试，0 失败 |
+| iOS 编译 | 已通过 | 模拟器 Debug 测试成功、iPhoneOS Release 设备目标编译成功；Debug 架构修复已验证 |
+| 模拟器启动 | 已通过 | 测试宿主 App 实际启动；没有完成逐页 UI 截图或人工交互验收 |
 | iPhone 安装 | 未执行 | 未使用用户 Team/签名材料，未生成已签名包 |
 | 自动化、OCR、通知真机行为 | 待验证 | 需按 device-validation.md 实际操作 |
-| GitHub Actions | 已运行，当前受限 | 已创建私有仓库并推送；最新运行 38142462652 未能启动 job |
-| Logo | 已生成并接入 | imagegen 原图、1024 RGB AppIcon 已接入资源清单；尚未完成原生资源编译 |
-| IPA | 尚未生成 | 不能将源代码压缩包作为 IPA；仍需要真实设备目标编译产物 |
+| GitHub Actions | 已成功 | 私有构建曾被账户限制阻断；经单独公开授权后，运行 38142462652 的尝试 2 成功 |
+| Logo | 已生成并打包 | imagegen 原图、1024 RGB AppIcon 已编译进入设备包 Assets.car 与系统图标资源 |
+| IPA | 已生成并核验 | 真实 arm64 iPhoneOS Mach-O、最低 iOS 17、ZIP CRC、未加密、无开发签名描述文件 |
+| 快捷动作元数据 | 已核验 | 包内包含连接、断开、电量、充满四动作，四个 AppShortcuts 与耳机档案实体查询 |
 
 ## 已修正的审查问题
 
@@ -34,4 +35,12 @@
 - 分享/导出由用户主动发起；没有 P1/P2 可选能力的占位按钮。
 - 排除记录可从“已排除”恢复；删除观察先明确确认。没有实现删除观察后的 8 秒恢复提示。
 
-下一步解除 GitHub 构建限制，或在 Mac 运行 `bash scripts/check-macos.sh`；完成编译测试后运行 IPA 打包脚本，再进行真机矩阵。账户限制提示原文为 “The job was not started because recent account payments have failed or your spending limit needs to be increased.” 该提示没有区分两种原因，不能据此断定用户欠费。
+## 构建证据与剩余验证
+
+成功运行：[38142462652 / attempt 2](https://github.com/ddddyh12138-commits/AirPodsTracker/actions/runs/38142462652/attempts/2)。编译的源码提交为 `5580b56ee181044f3e921790075ecdb4e20927d9`；后续仅更新交付文档。日志包含 `TEST SUCCEEDED` 与 `BUILD SUCCEEDED`，31 项 XCTest 均通过。
+
+包内程序大小 5,627,408 字节，IPA 大小 2,674,075 字节。IPA SHA-256：`73a7d3d050d44441ba744116c742d58e701e631b8b898115d3ba552160e2b971`。详见 `ipa-verification.json`。
+
+编译仍有 Swift 6 严格并发迁移警告，本版本使用 Swift 5 语言模式。App Intents 的 SSU 自然语言训练归档日志也有非阻断错误；设备包中的动作 JSON、四个快捷动作和实体查询均已解析核验，但 Siri 语音入口与系统快捷指令实际展示/调用仍需真机确认。没有把元数据存在等同于真机触发成功。
+
+下一步用用户自己的签名方式安装 IPA，按 `device-validation.md` 验证连接/断开自动化、OCR、通知、锁屏与强制退出条件。签名安装前不能将其登记为“可直接安装且自动化已验证”。

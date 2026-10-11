@@ -1,0 +1,28 @@
+{
+  "status": "package_verified",
+  "architecture": "arm64",
+  "platform": "iPhoneOS",
+  "bundle_identifier": "com.example.AirPodsTracker",
+  "display_name": "耳机时光",
+  "version": "1.0.0",
+  "build": "1",
+  "minimum_iOS": "17.0",
+  "binary_bytes": 5627408,
+  "ipa_bytes": 2674075,
+  "sha256": "73a7d3d050d44441ba744116c742d58e701e631b8b898115d3ba552160e2b971",
+  "zip_crc": "passed",
+  "provisioning_profile": false,
+  "encrypted": false,
+  "app_intents_metadata": [
+    "Payload/AirPodsTracker.app/Metadata.appintents/extract.actionsdata"
+  ],
+  "embedded_frameworks": [],
+  "app_intent_actions": [
+    "MarkCaseChargedIntent",
+    "RecordBatteryIntent",
+    "RecordConnectionIntent",
+    "RecordDisconnectionIntent"
+  ],
+  "app_shortcuts_count": 4,
+  "installation_status": "not installed; requires user signing"
+}
